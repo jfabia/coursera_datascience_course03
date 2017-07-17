@@ -14,22 +14,45 @@ rm(list=ls())
 defaultWorkspace <- "./"
 setwd(defaultWorkspace)
 
-# Ensure that the data folder is in place
-if(!file.exists("./data")){dir.create("./data")}
+# Ensure that all the necessary data is in place
+# If any of the data is not available, then extract from the zip file
+# If the zip file doesn't exist, download it first.
 
-# Download the data from the URL given, and extract the zip file. 
-fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(fileURL, destfile = "./data/dataset.zip")
-setwd("./data")
-unzip("dataset.zip")
+# Initialize the required data and dne_counter
+dne_counter <- 0
+file1 <- "./UCI HAR Dataset/activity_labels.txt"
+file2 <- "./UCI HAR Dataset/features.txt"
+file3 <- "./UCI HAR Dataset/test/subject_test.txt"
+file4 <- "./UCI HAR Dataset/test/X_test.txt"
+file5 <- "./UCI HAR Dataset/test/Y_test.txt"
+file6 <- "./UCI HAR Dataset/train/subject_train.txt"
+file7 <- "./UCI HAR Dataset/train/X_train.txt"
+file8 <- "./UCI HAR Dataset/train/Y_train.txt"
 
-# Reset the working directory to the default.
-setwd("../")
+# Create a data frame consisting of the strings above.
+datafiles <- rbind(file1, file2, file3, file4, file5, file6, file7, file8)
+
+# Loop across the datafile dataframe. If any of the files do not exist, the dne_counter will add up.
+for(i in 1:8){
+        if(!file.exists(datafiles[i,1])){
+                dne_counter <- dne_counter + 1
+        }
+}
+
+# A dne_counter greater than 0 signals the code to extract the files. 
+if(dne_counter > 0){
+# Check to see if the zip file exists; if it does not, then download the file first.
+        if(!file.exists("./dataset.zip")){
+                fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+                download.file(fileURL, destfile = "./dataset.zip")
+                }
+        unzip("dataset.zip")
+}
 
 # Set the filepaths of the different data in separate variables
-path_main <- paste(defaultWorkspace, "data","UCI HAR Dataset", sep ="/" )
-path_train <- paste(defaultWorkspace, "data","UCI HAR Dataset", "train", sep ="/" )
-path_test <- paste(defaultWorkspace, "data","UCI HAR Dataset", "test", sep ="/" )
+path_main <- paste(defaultWorkspace, "UCI HAR Dataset", sep ="/" )
+path_train <- paste(defaultWorkspace,"UCI HAR Dataset", "train", sep ="/" )
+path_test <- paste(defaultWorkspace, "UCI HAR Dataset", "test", sep ="/" )
 
 # read the data and store them in different dataframes.
 
