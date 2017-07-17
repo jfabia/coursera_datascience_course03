@@ -21,8 +21,8 @@ This repository contains three (3) files for the user to generate the file 'Tidy
 
 ### `run_analysis.R`
 This script will generate a tidy data set for the data provided by the assignment. The script can be run at any working directory. The script will:
-* Download the data set and park it in a subfolder, `'./data'`. If this folder does not exist yet, it will create it.
-* Extract the contents of the zip file in the data folder. The subfolder created is `./data/UCI HAR Dataset`.
+* Check if the required data sets are in the working directory. If the files aren't available, the code will extract the zip file. If the zip file does not exist, the code will download it.
+* Extract the contents of the zip file in the data folder. The subfolder created is `./UCI HAR Dataset`.
 * Read the following data files as dataframes.
     * `activity_labels.txt`
     * `features.txt`
