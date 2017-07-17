@@ -36,5 +36,7 @@ This script will generate a tidy data set for the data provided by the assignmen
 * Re-label the measured quantities to make them more descriptive
 * Create an independent tidy data set with the average of each quantity and statistic.
 
+There are comments in the ```run_analysis.R``` script that describe how the code works in detail.
+
 ## The CodeBook
-The codebook provides details of the all the variables, summaries, and all transformations done on the data.
+The codebook provides details of the variables and summaries for both the raw data sets and the tidy data set.

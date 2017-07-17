@@ -31,14 +31,16 @@ This contains 561 columns of data which correspond to the measured quantities di
 This contains data of the activity corresponding to the participant in  `subject_test`/`subject_train`. It is an integer and can be identified using `activity_labels.txt` 
 
 ## Part 2: The Tidy Data Submission
-This is data submission contains 5 columns of data that correspond to Participant ID, Activity, Quantity, Mean and Standard Deviation.
+This data submission contains five (5) columns of data that correspond to Participant, Activity, Quantity, Mean and Standard Deviation.
 
 ##### Participant
 Type: Integer
+
 This identifies the participant in the study. Values range from 1 to 30.
 
 ##### Activity
 Type: Character
+
 This identifies the activity that was logged by the smartphone's accelerometers. It can take on the following values which are described in `activity_labels.txt`:
 * WALKING
 * WALKING_UPSTAIRS
@@ -49,6 +51,7 @@ This identifies the activity that was logged by the smartphone's accelerometers.
 
 ##### Quantity
 Type: Character
+
 This identifies the quantity that was measured by the smartphone's accelerometers during the specified activities. 
 If the item ends in (.X, .Y, or .Z), it pertains to a measure on that axis.
 There are 33 possible values.
@@ -89,8 +92,10 @@ There are 33 possible values.
  
 ##### Mean
 Type: Number
+
 This calculates the average of the mean of the total observations for a particular Participant, Activity and Quantity.
 
-##### Standard Deviation
+##### StandardDeviation
 Type: Number
+
 This calculates the average of the standard deviation of the total observations for a particular Participant, Activity and Quantity.
